@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+scipy==1.13.1
+onnxruntime
+audio-separator
+audioread
+musicai_sdk
+python-dotenv
