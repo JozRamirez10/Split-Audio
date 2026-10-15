@@ -1,0 +1,22 @@
+services:
+  split-audio:
+    container_name: split_audio
+    build:
+      context: .
+      args:
+        # TODO: Uncomment the line below to install the lightweight CPU-only version of PyTorch. 
+        # Highly recommended to save ~2GB of image size unless you have an Nvidia GPU and gigabytes to spare!
+        # PYTORCH_INSTALL_ARGS: "--index-url https://download.pytorch.org/whl/cpu"
+    ports:
+      - "7002:7002"
+    env_file:
+      - .env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    volumes:
+      - ${TMP_DIR}:${TMP_DIR}
+      - ${DIR_MODELS}:${DIR_MODELS}
+    restart: always
